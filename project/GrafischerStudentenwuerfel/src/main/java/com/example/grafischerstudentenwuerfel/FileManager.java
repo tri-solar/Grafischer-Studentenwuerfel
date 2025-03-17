@@ -4,6 +4,7 @@ import com.example.grafischerstudentenwuerfel.model.ClassModel;
 import com.example.grafischerstudentenwuerfel.model.StudentModel;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class FileManager {
@@ -99,5 +101,38 @@ public class FileManager {
             return false;
         }
         return true;
+    }
+
+    public static boolean writeOptions(boolean isStudentPerLesson, boolean isStudentInSuccession){
+        String optionsJSON = String.format("{\"isStudentPerLesson\": %b, \"isStudentInSuccession\": %b}", isStudentPerLesson, isStudentInSuccession );
+
+        try {
+            PrintWriter pw = new PrintWriter(optionsPath.toString());
+            pw.println(optionsJSON);
+            pw.close();
+        } catch (IOException e) {
+            System.out.println("Error writing options: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean[] readOptions() {
+        boolean[] options = { false, false };
+        String lines = "";
+        try {
+            lines = Files.readString(optionsPath);
+            String[] linesSplit = lines.split(",");
+            String perLessonOption = linesSplit[0];
+            boolean perLessonValue = Boolean.parseBoolean(perLessonOption.split(":")[1].trim());
+
+            String successionOption = linesSplit[1];
+            boolean successionValue = Boolean.parseBoolean(successionOption.split(":")[1].trim());
+            options[0] = perLessonValue;
+            options[1] = successionValue;
+        } catch (IOException e) {
+            System.out.println("Error reading options: " + e.getMessage());
+        }
+        return options;
     }
 }
