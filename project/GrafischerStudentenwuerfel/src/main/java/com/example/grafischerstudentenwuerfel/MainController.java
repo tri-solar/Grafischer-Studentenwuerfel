@@ -1,18 +1,37 @@
 package com.example.grafischerstudentenwuerfel;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class MainController {
+
     @FXML
-    private Label welcomeText;
+    private ComboBox classBoxOne, classBoxTwo, classBoxThree;
+
+    @FXML
+    private Label studentCountOne, studentCountTwo, studentCountThree, studentNameText;
+
+    @FXML
+    private Button optionsButton, rollDiceButton, addStudentButton;
+
+    @FXML
+    private TextField addStudentText;
+
 
     public void initialize() {
         System.out.println("Initialize MainController");
     }
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    public void addStudent(ActionEvent actionEvent) {
+    }
+
+    public void rollDice(ActionEvent actionEvent) {
+    }
+
+    public void optionsPressed(ActionEvent actionEvent) {
     }
 }

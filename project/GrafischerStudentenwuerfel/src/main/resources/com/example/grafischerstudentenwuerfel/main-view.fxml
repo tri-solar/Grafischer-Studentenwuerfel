@@ -5,12 +5,32 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<VBox alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.grafischerstudentenwuerfel.MainController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
-
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
+  <HBox alignment="TOP_RIGHT">
+    <Button fx:id="optionsButton" text="⚙️" onAction="#optionsPressed"/>
+  </HBox>
+  <VBox alignment="CENTER">
+    <HBox alignment="CENTER">
+      <ComboBox fx:id="classBoxOne"/>
+      <Label fx:id="studentCountOne" text=" 0"/>
+    </HBox>
+    <HBox alignment="CENTER">
+      <ComboBox fx:id="classBoxTwo"/>
+      <Label fx:id="studentCountTwo" text=" 0"/>
+    </HBox>
+    <HBox alignment="CENTER">
+      <ComboBox fx:id="classBoxThree"/>
+      <Label fx:id="studentCountThree" text=" 0"/>
+    </HBox>
+    <Label fx:id="studentNameText" text="Ausgewählter Student"/>
+    <Button fx:id="rollDiceButton" text="Würfeln" onAction="#rollDice"/>
+  </VBox>
+  <HBox alignment="CENTER">
+    <TextField fx:id="addStudentText"/>
+    <Button fx:id="addStudentButton" text="Student hinzufügen" onAction="#addStudent"/>
+  </HBox>
 </VBox>
