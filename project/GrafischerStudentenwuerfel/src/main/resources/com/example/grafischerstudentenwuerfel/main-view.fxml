@@ -8,28 +8,42 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Separator?>
 <VBox alignment="TOP_CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.grafischerstudentenwuerfel.MainController">
   <HBox alignment="TOP_RIGHT">
-    <Button fx:id="optionsButton" text="⚙️" onAction="#optionsPressed"/>
+    <Button fx:id="optionsButton" styleClass="optionsButton" onAction="#optionsPressed">
+      <graphic>
+        <ImageView fitWidth="30" fitHeight="30">
+          <image>
+            <Image url="@gear.png"/>
+          </image>
+        </ImageView>
+      </graphic>
+    </Button>
   </HBox>
-  <VBox alignment="CENTER">
+  <VBox alignment="CENTER" spacing="15">
     <HBox alignment="CENTER">
-      <ComboBox fx:id="classBoxOne"/>
-      <Label fx:id="studentCountOne" text=" 0"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxOne"/>
+      <Label fx:id="studentCountOne" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <HBox alignment="CENTER">
-      <ComboBox fx:id="classBoxTwo"/>
-      <Label fx:id="studentCountTwo" text=" 0"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxTwo"/>
+      <Label fx:id="studentCountTwo" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <HBox alignment="CENTER">
-      <ComboBox fx:id="classBoxThree"/>
-      <Label fx:id="studentCountThree" text=" 0"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxThree"/>
+      <Label fx:id="studentCountThree" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
-    <Label fx:id="studentNameText" text="Ausgewählter Student"/>
-    <Button fx:id="rollDiceButton" text="Würfeln" onAction="#rollDice"/>
+    <VBox alignment="CENTER" spacing="10">
+      <Label textAlignment="CENTER" fx:id="studentNameText" styleClass="studentNameLabel" maxWidth="250" minWidth="250" text="Ausgewählter Student"/>
+      <Button fx:id="rollDiceButton" text="Würfeln" onAction="#rollDice"/>
+    </VBox>
   </VBox>
-  <HBox alignment="CENTER">
+  <Separator maxWidth="300"/>
+  <HBox alignment="CENTER" spacing="20">
     <TextField fx:id="addStudentText"/>
     <Button fx:id="addStudentButton" text="Student hinzufügen" onAction="#addStudent"/>
   </HBox>
