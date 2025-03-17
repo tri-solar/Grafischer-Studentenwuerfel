@@ -71,3 +71,11 @@ CheckBox {
     -fx-text-fill: #ffffff;
     -fx-background-color: #757575;
 }
+
+.saveText {
+    -fx-font-size: 15;
+    -fx-text-fill: #3ee440;
+    -fx-background-color: #a1a1a1;
+    -fx-border-color: #a1a1a1;
+    -fx-padding: 0px 0px;
+}

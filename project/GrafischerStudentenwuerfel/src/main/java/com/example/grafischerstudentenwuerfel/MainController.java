@@ -45,7 +45,7 @@ public class MainController {
     @FXML
     public void optionsPressed(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("options-view.fxml"));
-        Scene optionsScene = new Scene(loader.load(), 480, 320);
+        Scene optionsScene = new Scene(loader.load(), 500, 320);
         URL stylesheetUrl = Objects.requireNonNull(getClass().getResource("style.css"));
         optionsScene.getStylesheets().add(stylesheetUrl.toExternalForm());
 
