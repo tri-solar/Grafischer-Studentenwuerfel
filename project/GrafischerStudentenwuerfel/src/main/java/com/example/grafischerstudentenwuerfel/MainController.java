@@ -26,12 +26,15 @@ public class MainController {
         System.out.println("Initialize MainController");
     }
 
+    @FXML
     public void addStudent(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void rollDice(ActionEvent actionEvent) {
     }
 
+    @FXML
     public void optionsPressed(ActionEvent actionEvent) {
     }
 }
