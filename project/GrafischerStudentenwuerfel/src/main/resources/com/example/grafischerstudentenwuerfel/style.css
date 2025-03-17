@@ -59,3 +59,15 @@ Label {
     -fx-border-color: #6ec1ff;
     -fx-border-width: 3px;
 }
+
+CheckBox {
+    -fx-font-size: 20px;
+    -fx-text-fill: #0078d4;
+    -fx-border-width: 3px;
+}
+
+.optionsText {
+    -fx-font-size: 18;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #757575;
+}
