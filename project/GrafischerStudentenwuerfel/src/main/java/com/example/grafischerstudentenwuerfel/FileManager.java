@@ -85,16 +85,14 @@ public class FileManager {
         String protocolName = String.format("%s-%s.txt", dateFormatted, timeFormatted);
         String protocolPath = protocolsDir.toString() + "/" + protocolName;
 
-        String studentsJSON = "{\"students\": [";
+        String studentsString = "";
         for(StudentModel student : calledStudents) {
-            studentsJSON += student.toJSONString() + ",";
+            studentsString += student + ",\n";
         }
-        studentsJSON = studentsJSON.substring(0, studentsJSON.length() - 1);
-        studentsJSON += "]}";
 
         try {
             PrintWriter pw = new PrintWriter(protocolPath);
-            pw.println(studentsJSON);
+            pw.println(studentsString);
             pw.close();
         } catch (IOException e) {
             System.out.println("Error writing protocol: " + e.getMessage());

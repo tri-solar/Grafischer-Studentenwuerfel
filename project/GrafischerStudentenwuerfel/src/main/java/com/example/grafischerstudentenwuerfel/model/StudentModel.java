@@ -12,6 +12,7 @@ public class StudentModel implements Comparable<StudentModel> {
         this.classname = classname;
     }
 
+    // Unused right now, for later use
     public String toJSONString() {
         return String.format("{\"firstname\": \"%s\", \"lastname\": \"%s\", \"classname\": \"%s\"}", firstname, lastname, classname);
     }

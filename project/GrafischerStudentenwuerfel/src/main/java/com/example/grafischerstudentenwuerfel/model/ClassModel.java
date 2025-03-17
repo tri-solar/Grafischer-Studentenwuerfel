@@ -11,6 +11,7 @@ public class ClassModel {
         this.classname = classname;
     }
 
+    // Unused right now, for later use
     public String toJSONString() {
         String studentsJSON = "";
         for(StudentModel student : students) {
