@@ -19,7 +19,7 @@ Dieses Handbuch beschreibt die Nutzung der Software **Studentenwürfel**. Sie ri
 ## **2. Installation & Einrichtung**
 
 ### **2.1 Installation**
-1. Laden Sie das Programm für ihr Betriebsystem aus dem offiziellen GitHub-Repository herunter. Wir bieten Windows und Linux builds an, für macOS kann das Projekt selbst gebaut werden.
+1. Laden Sie das Programm für ihr Betriebsystem aus dem offiziellen GitHub-Repository herunter. Wir bieten Windows und Linux builds an, für macOS kann das [Projekt selbst gebaut](https://www.jetbrains.com/help/idea/javafx.html#package-app-with-jlink) werden.
 2. Entpacken Sie die Datei in ein Verzeichnis Ihrer Wahl.
 3. Führen Sie die ausführbare Datei aus.
 
@@ -30,7 +30,7 @@ Dieses Handbuch beschreibt die Nutzung der Software **Studentenwürfel**. Sie ri
    
    ![image](https://github.com/user-attachments/assets/9ab8b392-bfe7-42f9-81c5-bc18d1def550)
 
-4. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen im `.csv`-Format vorliegen.
+4. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen im `.csv`-Format und UTF-8 kodiert vorliegen.
 5. Alternativ können Sie über das Optionsmenü eine Klassenliste hinzufügen.
 
 ---
