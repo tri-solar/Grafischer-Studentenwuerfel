@@ -18,7 +18,7 @@
       <graphic>
         <ImageView fitWidth="30" fitHeight="30">
           <image>
-            <Image url="@gear.png"/>
+            <Image url="@icons/gear.png"/>
           </image>
         </ImageView>
       </graphic>
