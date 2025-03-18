@@ -19,7 +19,7 @@ public class StudentModel implements Comparable<StudentModel> {
 
     @Override
     public String toString() {
-        return String.format("%s %s", firstname, lastname);
+        return String.format("%s / %s %s", classname, firstname, lastname);
     }
 
     @Override
