@@ -77,9 +77,12 @@ CheckBox {
     -fx-background-color: #757575;
 }
 
-.saveText {
-    -fx-font-size: 15;
-    -fx-text-fill: #3ee440;
-    -fx-background-color: #a1a1a1;
-    -fx-border-color: #a1a1a1;
+.pickFileButton {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-background-radius: 5px;
+}
+
+.pickFileButton:hover {
+    -fx-background-color: #cfcfcf;
 }

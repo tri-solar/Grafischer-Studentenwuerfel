@@ -3,6 +3,7 @@ package com.example.grafischerstudentenwuerfel;
 import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -43,7 +44,9 @@ public class OptionsController {
 
     @FXML
     public void saveOptionsButton(ActionEvent actionEvent) {
-        saveMessageLabel.setText("Optionen gespeichert!");
+        System.out.println("Saved");
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -58,5 +61,13 @@ public class OptionsController {
         if (checkOne.isSelected()) {
             checkTwo.setSelected(true);
         }
+    }
+
+    public void addClassButton(ActionEvent actionEvent) {
+        if (pickedFileLabel.getText().equals("") || pickedFileLabel.getText().equals("Klasse hinzugefügt!") ) {
+            pickedFileLabel.setText("");
+            return;
+        }
+        pickedFileLabel.setText("Klasse hinzugefügt!");
     }
 }
