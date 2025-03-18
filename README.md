@@ -1,4 +1,4 @@
-# **Benutzerdokumentation Studentenwürfel**
+# **Benutzerhandbuch Studentenwürfel**
 
 ## **1. Einführung**
 
