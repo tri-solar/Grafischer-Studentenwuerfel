@@ -23,22 +23,37 @@ public class FileManager {
     private static final Path optionsPath = Paths.get(applicationDir + "/options.json");
     private static final Path protocolsDir= Paths.get(applicationDir + "/protocols");
 
+    public static void copyFile(File file)  {
+        try {
+            Path sourceDir = Path.of(file.getAbsolutePath());
+            Path destDir = Path.of(classesDir + "\\" + file.getName());
+            Files.copy(sourceDir, destDir);
+        } catch (IOException e) {
+            System.out.println("Error copying class: " +e.getMessage());
+        }
+
+    }
+
     public static void initialSetup() {
+        System.out.println("Initialize FileManager");
         try {
             // Create application directory if not present
             Path applicationDirPath = Paths.get(applicationDir);
             if (Files.notExists(applicationDirPath)) {
                 Files.createDirectory(applicationDirPath);
+                System.out.println("Directory created: " + applicationDirPath);
             }
 
             // Create classes directory if not present
             if (Files.notExists(classesDir)) {
                 Files.createDirectory(classesDir);
+                System.out.println("Directory created: " + classesDir);
             }
 
             // Create protocol directory if not present
             if (Files.notExists(protocolsDir)) {
                 Files.createDirectory(protocolsDir);
+                System.out.println("Directory created: " + protocolsDir);
             }
         } catch (IOException e) {
             System.out.println("Error creating directories: " +e.getMessage());
@@ -76,13 +91,10 @@ public class FileManager {
         Date today = new Date();
 
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        DateFormat timeFormat = new SimpleDateFormat("HH");
-
         String dateFormatted = dateFormat.format(today);
-        String timeFormatted = timeFormat.format(today);
 
-        String protocolName = String.format("%s-%s.txt", dateFormatted, timeFormatted);
-        String protocolPath = protocolsDir.toString() + "/" + protocolName;
+        String protocolName = String.format("%s.txt", dateFormatted);
+        String protocolPath = protocolsDir + "/" + protocolName;
 
         String studentsString = "";
         for(StudentModel student : calledStudents) {

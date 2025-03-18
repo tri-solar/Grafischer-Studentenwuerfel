@@ -3,6 +3,7 @@ package com.example.grafischerstudentenwuerfel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 640, 460);
+        stage.getIcons().add(new Image(MainApplication.class.getResourceAsStream("icon.png")));
         stage.setTitle("Studentenwürfel");
         stage.setResizable(false);
         URL stylesheetUrl = Objects.requireNonNull(getClass().getResource("style.css"));

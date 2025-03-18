@@ -18,7 +18,7 @@
       <graphic>
         <ImageView fitWidth="30" fitHeight="30">
           <image>
-            <Image url="@gear.png"/>
+            <Image url="@icons/gear.png"/>
           </image>
         </ImageView>
       </graphic>
@@ -26,15 +26,15 @@
   </HBox>
   <VBox alignment="CENTER" spacing="15">
     <HBox alignment="CENTER">
-      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxOne"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxOne" onAction="#updateStudentCount"/>
       <Label fx:id="studentCountOne" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <HBox alignment="CENTER">
-      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxTwo"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxTwo" onAction="#updateStudentCount"/>
       <Label fx:id="studentCountTwo" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <HBox alignment="CENTER">
-      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxThree"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxThree" onAction="#updateStudentCount"/>
       <Label fx:id="studentCountThree" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <VBox alignment="CENTER" spacing="10">
