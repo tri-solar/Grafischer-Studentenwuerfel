@@ -27,15 +27,17 @@ Dieses Handbuch beschreibt die Nutzung der Software **Studentenwürfel**. Sie ri
 1. Starten Sie die Anwendung.
 2. Der Applikationsordner wird automatisch angelegt.
 3. Die Software speichert ihre Daten bevorzugt auf dem `H:`-Laufwerk (unter Windows). Falls dieses nicht verfügbar ist, wird stattdessen das Home-Verzeichnis auf `C:` (Windows) bzw. `~/` (Linux/macOS) genutzt.
-4. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen im `.csv`-Format vorliegen.
-5. Alternativ können Sie über das Optionsmenü eine Klassenliste hinzufügen.
+   
+   ![image](https://github.com/user-attachments/assets/9ab8b392-bfe7-42f9-81c5-bc18d1def550)
+5. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen im `.csv`-Format vorliegen.
+6. Alternativ können Sie über das Optionsmenü eine Klassenliste hinzufügen.
 
 ---
 
 ## **3. Bedienung der Software**
 
 ### **3.1 Hauptfenster**
-![image](https://github.com/user-attachments/assets/95dde090-b914-4d44-9358-639ea76569ee)
+![image](https://github.com/user-attachments/assets/022eb6f3-284a-4be6-9506-c992e8c95ff5)
 
 Im Hauptfenster haben Sie folgende Möglichkeiten:
 - Wählen Sie eine bis drei Klassenlisten aus.
