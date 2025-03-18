@@ -62,7 +62,7 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 1. Das Programm protokolliert automatisch, welche Studenten in welcher Reihenfolge dran waren.
 2. Auf dem Hauptfenster können Sie Studenten manuell ins Protokoll eintragen: Geben Sie den Namen ein und klicken Sie auf **Student hinzufügen**.
 
-![image](https://github.com/user-attachments/assets/427932b1-ca97-4775-9cab-ff3742c4edb8)
+![image](https://github.com/user-attachments/assets/229cf7ff-675d-4a1c-8f8e-60cac5f66e37)
 4. Die Protokolle werden in `~/Studentenwuerfel/protocols/` gespeichert. Sie beinhalten die Klasse des Studenten und den Namen.
 
 ---
