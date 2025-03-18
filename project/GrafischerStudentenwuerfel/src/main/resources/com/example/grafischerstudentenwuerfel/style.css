@@ -29,7 +29,7 @@ Button:hover {
     -fx-background-color: ffffff;
     -fx-border-color: #3dadff;
     -fx-border-width: 5px;
-    -fx-border-radius: 15px;
+    -fx-border-radius: 20px;
     -fx-background-radius: 22px;
 }
 
@@ -60,10 +60,15 @@ Label {
     -fx-border-width: 3px;
 }
 
+.optionsBox {
+    -fx-padding: 10;
+}
+
 CheckBox {
     -fx-font-size: 20px;
     -fx-text-fill: #0078d4;
     -fx-border-width: 3px;
+    -fx-padding: 10;
 }
 
 .optionsText {
@@ -77,5 +82,4 @@ CheckBox {
     -fx-text-fill: #3ee440;
     -fx-background-color: #a1a1a1;
     -fx-border-color: #a1a1a1;
-    -fx-padding: 0px 0px;
 }
