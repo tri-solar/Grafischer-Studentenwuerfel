@@ -52,7 +52,7 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 
 Über den **Options-Button** gelangen Sie ins Optionsfenster, wo Sie folgende Einstellungen vornehmen können:
 - **Regeln aktivieren/deaktivieren** (Checkboxen zur Konfiguration der Auswahlregeln).
-- **Eine Klassenliste manuell hinzufügen** (File-Picker für `.csv`-Dateien).
+- **Klassenliste manuell hinzufügen** (öffnet einen File-Picker für `.csv`-Dateien).
 
   ![image](https://github.com/user-attachments/assets/0311bf1e-2bd4-40af-a829-f69913ef117e)
 - Der Name der gewählten Datei wird ihnen angezeigt.
