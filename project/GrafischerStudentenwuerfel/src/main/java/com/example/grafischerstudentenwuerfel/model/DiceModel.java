@@ -1,19 +1,33 @@
 package com.example.grafischerstudentenwuerfel.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class DiceModel {
     private ArrayList<StudentModel> students;
     private Random rn;
 
-    DiceModel(StudentModel [] firstSelection, StudentModel [] secondSelection, StudentModel [] thirdSelection) {
+    public DiceModel(ArrayList<StudentModel> firstSelection, ArrayList<StudentModel> secondSelection, ArrayList<StudentModel> thirdSelection) {
         this.students = new ArrayList<>();
-        this.students.addAll(Arrays.asList(firstSelection));
-        this.students.addAll(Arrays.asList(secondSelection));
-        this.students.addAll(Arrays.asList(thirdSelection));
+        if (!(firstSelection == null)) {
+            this.students.addAll(firstSelection);
+        }
+        if (!(secondSelection == null)) {
+            this.students.addAll(secondSelection);
+        }
+        if (!(thirdSelection == null)) {
+            this.students.addAll(thirdSelection);
+        }
 
         this.rn = new Random();
+
+    }
+
+    public ArrayList<StudentModel> getStudents() {
+        return students;
+    }
+
+    public StudentModel rollDice() {
+        return this.students.get(rn.nextInt(0, this.students.size()));
     }
 }
