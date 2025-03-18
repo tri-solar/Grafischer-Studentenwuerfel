@@ -39,16 +39,12 @@ public class MainController {
 
     ArrayList<ClassModel> classes = FileManager.readClasses();
     ArrayList<StudentModel> calledStudents = new ArrayList<>();
-
+    DiceModel dice;
 
     public void initialize() {
         System.out.println("Initialize MainController");
-
-
         FileManager.initialSetup();
         generateClasses();
-
-
     }
 
     public void generateClasses() {
@@ -64,6 +60,9 @@ public class MainController {
         classBoxOne.setValue(classList.get(0));
         classBoxTwo.setValue(classList.get(0));
         classBoxThree.setValue(classList.get(0));
+        dice = new DiceModel(getStudentModel(classBoxOne),
+                getStudentModel(classBoxTwo),
+                getStudentModel(classBoxThree));
     }
 
     @FXML
@@ -78,12 +77,6 @@ public class MainController {
 
     @FXML
     public void rollDice(ActionEvent actionEvent) {
-
-
-        DiceModel dice = new DiceModel(getStudentModel(classBoxOne),
-                getStudentModel(classBoxTwo),
-                getStudentModel(classBoxThree));
-
         if (dice.getStudents().isEmpty()) {
             return;
         }
@@ -111,12 +104,13 @@ public class MainController {
         optionsStage.setOnCloseRequest(event -> {
             generateClasses();
         });
-
         optionsStage.showAndWait();
-
     }
 
     public void updateStudentCount(ActionEvent actionEvent) {
+        dice.setStudents(getStudentModel(classBoxOne),
+                getStudentModel(classBoxTwo),
+                getStudentModel(classBoxThree));
         countStudents(classBoxOne, studentCountOne);
         countStudents(classBoxTwo, studentCountTwo);
         countStudents(classBoxThree, studentCountThree);

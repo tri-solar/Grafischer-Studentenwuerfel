@@ -8,6 +8,16 @@ public class DiceModel {
     private Random rn;
 
     public DiceModel(ArrayList<StudentModel> firstSelection, ArrayList<StudentModel> secondSelection, ArrayList<StudentModel> thirdSelection) {
+        setStudents(firstSelection, secondSelection, thirdSelection);
+
+        this.rn = new Random();
+    }
+
+    public ArrayList<StudentModel> getStudents() {
+        return students;
+    }
+
+    public void setStudents(ArrayList<StudentModel> firstSelection, ArrayList<StudentModel> secondSelection, ArrayList<StudentModel> thirdSelection) {
         this.students = new ArrayList<>();
         if (!(firstSelection == null)) {
             this.students.addAll(firstSelection);
@@ -18,13 +28,6 @@ public class DiceModel {
         if (!(thirdSelection == null)) {
             this.students.addAll(thirdSelection);
         }
-
-        this.rn = new Random();
-
-    }
-
-    public ArrayList<StudentModel> getStudents() {
-        return students;
     }
 
     public StudentModel rollDice() {

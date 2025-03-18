@@ -30,17 +30,14 @@ public class OptionsController {
     }
 
     @FXML
-    public void pickFile(ActionEvent actionEvent) throws IOException {
+    public void pickFile(ActionEvent actionEvent)  {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Dateien", "*.csv"));
-        //fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Alle Dateien", "*.*"));
 
         File file = fileChooser.showOpenDialog(null);
         if (file != null) { // placeholder logik
             pickedFileLabel.setText(file.getName());
-            Path sourceDir = Path.of(file.getAbsolutePath());
-            Path destDir = Path.of(FileManager.getClassesDirectory() + "\\" + file.getName());
-            Files.copy(sourceDir, destDir);
+            FileManager.copyFile(file);
         }
     }
 

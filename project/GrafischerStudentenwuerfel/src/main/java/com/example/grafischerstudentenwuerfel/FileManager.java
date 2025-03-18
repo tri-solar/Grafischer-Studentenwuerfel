@@ -23,8 +23,15 @@ public class FileManager {
     private static final Path optionsPath = Paths.get(applicationDir + "/options.json");
     private static final Path protocolsDir= Paths.get(applicationDir + "/protocols");
 
-    public static Path getClassesDirectory() {
-        return classesDir;
+    public static void copyFile(File file)  {
+        try {
+            Path sourceDir = Path.of(file.getAbsolutePath());
+            Path destDir = Path.of(classesDir + "\\" + file.getName());
+            Files.copy(sourceDir, destDir);
+        } catch (IOException e) {
+            System.out.println("Error copying class: " +e.getMessage());
+        }
+
     }
 
     public static void initialSetup() {
@@ -52,7 +59,6 @@ public class FileManager {
             System.out.println("Error creating directories: " +e.getMessage());
         }
     }
-
 
     public static ArrayList<ClassModel> readClasses() {
         ArrayList<ClassModel> classes = new ArrayList<>();
@@ -138,5 +144,4 @@ public class FileManager {
         }
         return options;
     }
-
 }
