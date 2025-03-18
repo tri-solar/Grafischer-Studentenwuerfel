@@ -19,7 +19,7 @@ Dieses Handbuch beschreibt die Nutzung der Software **Studentenwürfel**. Sie ri
 ## **2. Installation & Einrichtung**
 
 ### **2.1 Installation**
-1. Laden Sie das Programm aus dem offiziellen GitHub-Repository herunter.
+1. Laden Sie das Programm für ihr Betriebsystem aus dem offiziellen GitHub-Repository herunter. Wir bieten Windows und Linux builds an, für macOS kann das Projekt selbst gebaut werden.
 2. Entpacken Sie die Datei in ein Verzeichnis Ihrer Wahl.
 3. Führen Sie die ausführbare Datei aus.
 
@@ -61,7 +61,9 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 ### **3.3 Erstellung eines Protokolls**
 1. Das Programm protokolliert automatisch, welche Studenten in welcher Reihenfolge dran waren.
 2. Auf dem Hauptfenster können Sie Studenten manuell ins Protokoll eintragen: Geben Sie den Namen ein und klicken Sie auf **Student hinzufügen**.
-3. Die Protokolle werden in `~/Studentenwuerfel/protocols/` gespeichert.
+
+   ![image](https://github.com/user-attachments/assets/293985cb-2a9d-46bb-891a-7ecee26b53a2)
+4. Die Protokolle werden in `~/Studentenwuerfel/protocols/` gespeichert. Sie beinhalten die Klasse des Studenten und den Namen.
 
 ---
 
