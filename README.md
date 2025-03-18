@@ -41,6 +41,9 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 - Wählen Sie eine bis drei Klassenlisten aus.
 - Klicken Sie auf den **Würfel-Button**, um einen Studenten zufällig auszuwählen.
 - Fügen Sie einen Studenten manuell ins Protokoll hinzu.
+  
+ ![image](https://github.com/user-attachments/assets/f8261ae0-cb8b-40bd-999f-78cb85aada56)
+- Wenn sie einige Klassen gewählt haben, wird ihnen die jeweilige Anzahl der Studenten angezeigt.
 
 ### **3.2 Optionenmenü**
 ![image](https://github.com/user-attachments/assets/c906ab6e-001e-4dfd-aafe-8912d991ecd7)
