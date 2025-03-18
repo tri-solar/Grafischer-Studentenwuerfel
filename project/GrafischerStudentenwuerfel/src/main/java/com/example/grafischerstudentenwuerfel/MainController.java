@@ -43,9 +43,17 @@ public class MainController {
 
     public void initialize() {
         System.out.println("Initialize MainController");
-        classList = FXCollections.observableArrayList();
+
 
         FileManager.initialSetup();
+        generateClasses();
+
+
+    }
+
+    public void generateClasses() {
+        classes = FileManager.readClasses();
+        classList = FXCollections.observableArrayList();
         classList.add("Keine Klasse");
         for (ClassModel aClass : classes) {
             classList.add(aClass.getClassname());
@@ -60,6 +68,12 @@ public class MainController {
 
     @FXML
     public void addStudent(ActionEvent actionEvent) {
+        String newStudentName = addStudentText.getText();
+        System.out.println(newStudentName);
+        StudentModel newStudent = new StudentModel(
+                "", newStudentName, "Manuell hinzugefügt");
+        calledStudents.add(newStudent);
+        FileManager.writeProtocol(calledStudents);
     }
 
     @FXML
@@ -76,7 +90,8 @@ public class MainController {
 
         StudentModel randomStudent = dice.rollDice();
         System.out.println(randomStudent);
-        studentNameText.setText(randomStudent.toString());
+        studentNameText.setText(randomStudent.getFirstname() +
+                " " + randomStudent.getLastname());
         calledStudents.add(randomStudent);
         FileManager.writeProtocol(calledStudents);
     }
@@ -93,8 +108,12 @@ public class MainController {
         optionsStage.setResizable(false);
         optionsStage.setTitle("Optionen");
         optionsStage.setScene(optionsScene);
+        optionsStage.setOnCloseRequest(event -> {
+            generateClasses();
+        });
 
         optionsStage.showAndWait();
+
     }
 
     public void updateStudentCount(ActionEvent actionEvent) {
@@ -117,7 +136,7 @@ public class MainController {
     }
 
     private void countStudents(ComboBox<String> classBox, Label studentCount) {
-        if (classBox.getValue().equals("Keine Klasse")) {
+        if (classBox.getValue() == null || classBox.getValue().equals("Keine Klasse")) {
             studentCount.setText("00");
             return;
         }

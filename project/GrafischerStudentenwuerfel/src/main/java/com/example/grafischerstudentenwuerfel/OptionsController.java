@@ -1,5 +1,6 @@
 package com.example.grafischerstudentenwuerfel;
 
+import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +10,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class OptionsController {
 
@@ -26,14 +30,17 @@ public class OptionsController {
     }
 
     @FXML
-    public void pickFile(ActionEvent actionEvent) {
+    public void pickFile(ActionEvent actionEvent) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Dateien", "*.csv"));
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Alle Dateien", "*.*"));
+        //fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Alle Dateien", "*.*"));
 
         File file = fileChooser.showOpenDialog(null);
         if (file != null) { // placeholder logik
             pickedFileLabel.setText(file.getName());
+            Path sourceDir = Path.of(file.getAbsolutePath());
+            Path destDir = Path.of(FileManager.getClassesDirectory() + "\\" + file.getName());
+            Files.copy(sourceDir, destDir);
         }
     }
 

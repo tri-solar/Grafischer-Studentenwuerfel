@@ -23,6 +23,10 @@ public class FileManager {
     private static final Path optionsPath = Paths.get(applicationDir + "/options.json");
     private static final Path protocolsDir= Paths.get(applicationDir + "/protocols");
 
+    public static Path getClassesDirectory() {
+        return classesDir;
+    }
+
     public static void initialSetup() {
         System.out.println("Initialize FileManager");
         try {
@@ -49,8 +53,8 @@ public class FileManager {
         }
     }
 
+
     public static ArrayList<ClassModel> readClasses() {
-        System.out.println("Read Classes");
         ArrayList<ClassModel> classes = new ArrayList<>();
         File classesDirectory = classesDir.toFile();
         File[] classFiles = classesDirectory.listFiles();
@@ -88,7 +92,7 @@ public class FileManager {
 
         String studentsString = "";
         for(StudentModel student : calledStudents) {
-            studentsString += student.getClassname() + " " + student + ",\n";
+            studentsString += student + ",\n";
         }
 
         try {
@@ -134,4 +138,5 @@ public class FileManager {
         }
         return options;
     }
+
 }
