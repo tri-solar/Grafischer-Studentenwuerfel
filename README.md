@@ -35,13 +35,15 @@ Dieses Handbuch beschreibt die Nutzung der Software **Studentenwürfel**. Sie ri
 ## **3. Bedienung der Software**
 
 ### **3.1 Hauptfenster**
+![image](https://github.com/user-attachments/assets/95dde090-b914-4d44-9358-639ea76569ee)
+
 Im Hauptfenster haben Sie folgende Möglichkeiten:
 - Wählen Sie eine bis drei Klassenlisten aus.
 - Klicken Sie auf den **Würfel-Button**, um einen Studenten zufällig auszuwählen.
 - Fügen Sie einen Studenten manuell ins Protokoll hinzu.
 
-### **3.2 Optionsmenü**
-  ![image](https://github.com/user-attachments/assets/123520d8-9ce9-4580-823c-06aa509d9c93)
+### **3.2 Optionenmenü**
+![image](https://github.com/user-attachments/assets/90a810a1-c4a2-4590-98f7-ca0fb3a0aec5)
 
 Über den **Options-Button** gelangen Sie ins Optionsfenster, wo Sie folgende Einstellungen vornehmen können:
 - **Regeln aktivieren/deaktivieren** (Checkboxen zur Konfiguration der Auswahlregeln).
@@ -50,7 +52,7 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 
 ### **3.3 Erstellung eines Protokolls**
 1. Das Programm protokolliert automatisch, welche Studenten in welcher Reihenfolge dran waren.
-2. Sie können einen Studenten manuell ins Protokoll eintragen: Geben Sie den Namen ein und klicken Sie auf **Student hinzufügen**.
+2. Auf dem Hauptfenster können Sie einen Studenten manuell ins Protokoll eintragen: Geben Sie den Namen ein und klicken Sie auf **Student hinzufügen**.
 3. Die Protokolle werden in `~/Studentenwuerfel/protocols/` gespeichert.
 
 ---
