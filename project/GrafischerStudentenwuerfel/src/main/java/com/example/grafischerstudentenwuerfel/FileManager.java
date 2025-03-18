@@ -91,7 +91,7 @@ public class FileManager {
 
         String studentsString = "";
         for(StudentModel student : calledStudents) {
-            studentsString += student + ",\n";
+            studentsString += student.getClassname() + " " + student + ",\n";
         }
 
         try {

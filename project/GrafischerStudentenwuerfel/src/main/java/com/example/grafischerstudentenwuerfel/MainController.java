@@ -78,6 +78,7 @@ public class MainController {
         System.out.println(randomStudent);
         studentNameText.setText(randomStudent.toString());
         calledStudents.add(randomStudent);
+        FileManager.writeProtocol(calledStudents);
     }
 
     @FXML
