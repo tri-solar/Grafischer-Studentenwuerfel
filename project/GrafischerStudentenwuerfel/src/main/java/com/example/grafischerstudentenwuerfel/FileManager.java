@@ -81,13 +81,10 @@ public class FileManager {
         Date today = new Date();
 
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        DateFormat timeFormat = new SimpleDateFormat("HH");
-
         String dateFormatted = dateFormat.format(today);
-        String timeFormatted = timeFormat.format(today);
 
-        String protocolName = String.format("%s-%s.txt", dateFormatted, timeFormatted);
-        String protocolPath = protocolsDir.toString() + "/" + protocolName;
+        String protocolName = String.format("%s.txt", dateFormatted);
+        String protocolPath = protocolsDir + "/" + protocolName;
 
         String studentsString = "";
         for(StudentModel student : calledStudents) {
