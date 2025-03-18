@@ -4,10 +4,8 @@ import com.example.grafischerstudentenwuerfel.model.ClassModel;
 import com.example.grafischerstudentenwuerfel.model.StudentModel;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,14 +13,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 public class FileManager {
-    private static String applicationDir = System.getProperty("user.home") + "/studentenwuerfel";
-    private static Path classesDir = Paths.get(applicationDir + "/classes/");
-    private static Path optionsPath = Paths.get(applicationDir + "/options.json");
-    private static Path protocolsDir= Paths.get(applicationDir + "/protocols");
+    private static final String preferredDir = "H:/";
+    private static final String defaultDir = System.getProperty("user.home");
+    private static final String applicationDir = (Files.exists(Paths.get(defaultDir)) ? defaultDir : preferredDir) + "/studentenwuerfel";
+    private static final Path classesDir = Paths.get(applicationDir + "/classes/");
+    private static final Path optionsPath = Paths.get(applicationDir + "/options.json");
+    private static final Path protocolsDir= Paths.get(applicationDir + "/protocols");
 
     public static void initialSetup() {
         try {
