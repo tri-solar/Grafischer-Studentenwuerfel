@@ -11,9 +11,10 @@ Studenten zufällig auszuwählen und Sitzungsprotokolle zu führen.
 - Nutzer, die Sitzungsprotokolle führen wollen.
 
 ### **1.3 Systemvoraussetzungen**
-- Betriebssystem: Windows 10 / macOS / Linux (mindestens Kernel 4.x)
-- RAM: Mindestens 512 MB
-- Speicherplatz: Mindestens 100 MB
+Damit die Software reibungslos funktioniert, müssen folgende Systemvoraussetzungen erfüllt sein:
+- Betriebssystem: Windows 10 oder höher, macOS, Linux (mindestens Kernel 4.x)
+- Arbeitsspeicher (RAM): Mindestens 512 MB
+- Speicherplatz: Mindestens 100 MB freier Speicherplatz
 
 ---
 
@@ -27,12 +28,20 @@ Studenten zufällig auszuwählen und Sitzungsprotokolle zu führen.
 ### **2.2 Erster Start**
 1. Starten Sie die Anwendung.
 2. Der Applikationsordner wird automatisch angelegt.
-3. Die Software speichert ihre Daten bevorzugt auf dem `H:`-Laufwerk (unter Windows). Falls dieses nicht verfügbar ist, wird stattdessen das Home-Verzeichnis auf `C:` (Windows) bzw. `~/` (Linux/macOS) genutzt.
+3. Die Software speichert ihre Daten bevorzugt auf dem `H:`-Laufwerk (unter Windows). Falls dieses nicht verfügbar ist, wird stattdessen das Home-Verzeichnis des Nutzers bzw. `~/home/$USER` (Linux/macOS) genutzt.
    
    ![image](https://github.com/user-attachments/assets/9ab8b392-bfe7-42f9-81c5-bc18d1def550)
 
-4. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen im `.csv`-Format und UTF-8 kodiert vorliegen.
-5. Alternativ können Sie über das Optionsmenü eine Klassenliste hinzufügen.
+4. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen wie die Klasse heißen, im `.csv`-Format sein und UTF-8 kodiert vorliegen.
+Beispiel Aufbau einer Klassendatei:
+`PBBFA23A.csv`
+```
+Vorname,Nachname
+Max,Mustermann
+Marcel,Davis
+```   
+
+6. Alternativ können Sie über das Optionsmenü eine Klassenliste hinzufügen.
 
 ---
 
