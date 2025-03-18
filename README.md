@@ -40,10 +40,9 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 - Klicken Sie auf den **Würfel-Button**, um einen Studenten zufällig auszuwählen.
 - Fügen Sie einen Studenten manuell ins Protokoll hinzu.
 
+### **3.2 Optionsmenü**
   ![image](https://github.com/user-attachments/assets/123520d8-9ce9-4580-823c-06aa509d9c93)
 
-
-### **3.2 Optionsmenü**
 Über den **Options-Button** gelangen Sie ins Optionsfenster, wo Sie folgende Einstellungen vornehmen können:
 - **Regeln aktivieren/deaktivieren** (Checkboxen zur Konfiguration der Auswahlregeln).
 - **Eine Klassenliste manuell hinzufügen** (File-Picker für `.csv`-Dateien).
