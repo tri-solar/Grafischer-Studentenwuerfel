@@ -43,7 +43,7 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 - Fügen Sie einen Studenten manuell ins Protokoll hinzu.
 
 ### **3.2 Optionenmenü**
-![image](https://github.com/user-attachments/assets/90a810a1-c4a2-4590-98f7-ca0fb3a0aec5)
+![image](https://github.com/user-attachments/assets/c906ab6e-001e-4dfd-aafe-8912d991ecd7)
 
 Über den **Options-Button** gelangen Sie ins Optionsfenster, wo Sie folgende Einstellungen vornehmen können:
 - **Regeln aktivieren/deaktivieren** (Checkboxen zur Konfiguration der Auswahlregeln).
