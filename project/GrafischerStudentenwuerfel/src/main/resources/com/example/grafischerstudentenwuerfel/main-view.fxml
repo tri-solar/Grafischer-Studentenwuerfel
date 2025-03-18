@@ -26,15 +26,15 @@
   </HBox>
   <VBox alignment="CENTER" spacing="15">
     <HBox alignment="CENTER">
-      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxOne"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxOne" onAction="#updateStudenCount"/>
       <Label fx:id="studentCountOne" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <HBox alignment="CENTER">
-      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxTwo"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxTwo" onAction="#updateStudenCount"/>
       <Label fx:id="studentCountTwo" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <HBox alignment="CENTER">
-      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxThree"/>
+      <ComboBox maxWidth="190" minWidth="190" fx:id="classBoxThree" onAction="#updateStudenCount"/>
       <Label fx:id="studentCountThree" maxWidth="35" minWidth="35" text="00"/>
     </HBox>
     <VBox alignment="CENTER" spacing="10">

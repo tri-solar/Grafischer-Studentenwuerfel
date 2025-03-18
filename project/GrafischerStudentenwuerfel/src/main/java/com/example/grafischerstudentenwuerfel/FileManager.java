@@ -24,21 +24,25 @@ public class FileManager {
     private static final Path protocolsDir= Paths.get(applicationDir + "/protocols");
 
     public static void initialSetup() {
+        System.out.println("Initialize FileManager");
         try {
             // Create application directory if not present
             Path applicationDirPath = Paths.get(applicationDir);
             if (Files.notExists(applicationDirPath)) {
                 Files.createDirectory(applicationDirPath);
+                System.out.println("Directory created: " + applicationDirPath);
             }
 
             // Create classes directory if not present
             if (Files.notExists(classesDir)) {
                 Files.createDirectory(classesDir);
+                System.out.println("Directory created: " + classesDir);
             }
 
             // Create protocol directory if not present
             if (Files.notExists(protocolsDir)) {
                 Files.createDirectory(protocolsDir);
+                System.out.println("Directory created: " + protocolsDir);
             }
         } catch (IOException e) {
             System.out.println("Error creating directories: " +e.getMessage());
@@ -46,6 +50,7 @@ public class FileManager {
     }
 
     public static ArrayList<ClassModel> readClasses() {
+        System.out.println("Read Classes");
         ArrayList<ClassModel> classes = new ArrayList<>();
         File classesDirectory = classesDir.toFile();
         File[] classFiles = classesDirectory.listFiles();
