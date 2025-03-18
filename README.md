@@ -3,7 +3,8 @@
 ## **1. Einführung**
 
 ### **1.1 Zweck des Handbuchs**
-Dieses Handbuch beschreibt die Nutzung der Software **Studentenwürfel**. Sie richtet sich an Dozenten und Lehrkräfte generell.
+Dieses Handbuch beschreibt die Nutzung der Software Studentenwürfel. Sie richtet sich an Dozenten und Lehrkräfte, die eine einfache Möglichkeit benötigen, 
+Studenten zufällig auszuwählen und Sitzungsprotokolle zu führen.
 
 ### **1.2 Zielgruppe**
 - Lehrkräfte und Dozenten, die Studenten zufällig auswählen möchten.
