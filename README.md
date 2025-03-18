@@ -29,8 +29,9 @@ Dieses Handbuch beschreibt die Nutzung der Software **Studentenwürfel**. Sie ri
 3. Die Software speichert ihre Daten bevorzugt auf dem `H:`-Laufwerk (unter Windows). Falls dieses nicht verfügbar ist, wird stattdessen das Home-Verzeichnis auf `C:` (Windows) bzw. `~/` (Linux/macOS) genutzt.
    
    ![image](https://github.com/user-attachments/assets/9ab8b392-bfe7-42f9-81c5-bc18d1def550)
-5. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen im `.csv`-Format vorliegen.
-6. Alternativ können Sie über das Optionsmenü eine Klassenliste hinzufügen.
+
+4. Legen Sie die Klassenlisten in `~/Studentenwuerfel/classes/` ab. Die Dateien müssen im `.csv`-Format vorliegen.
+5. Alternativ können Sie über das Optionsmenü eine Klassenliste hinzufügen.
 
 ---
 
@@ -63,6 +64,7 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 2. Auf dem Hauptfenster können Sie Studenten manuell ins Protokoll eintragen: Geben Sie den Namen ein und klicken Sie auf **Student hinzufügen**.
 
 ![image](https://github.com/user-attachments/assets/229cf7ff-675d-4a1c-8f8e-60cac5f66e37)
+
 4. Die Protokolle werden in `~/Studentenwuerfel/protocols/` gespeichert. Sie beinhalten die Klasse des Studenten und den Namen.
 
 ---
