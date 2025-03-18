@@ -17,6 +17,10 @@ public class StudentModel implements Comparable<StudentModel> {
         return String.format("{\"firstname\": \"%s\", \"lastname\": \"%s\", \"classname\": \"%s\"}", firstname, lastname, classname);
     }
 
+    public String getClassname() {
+        return classname;
+    }
+
     @Override
     public String toString() {
         return String.format("%s / %s %s", classname, firstname, lastname);

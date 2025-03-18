@@ -1,6 +1,8 @@
 package com.example.grafischerstudentenwuerfel;
 
 import com.example.grafischerstudentenwuerfel.model.ClassModel;
+import com.example.grafischerstudentenwuerfel.model.DiceModel;
+import com.example.grafischerstudentenwuerfel.model.StudentModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -23,7 +24,7 @@ import java.util.Objects;
 public class MainController {
 
     @FXML
-    private ComboBox classBoxOne, classBoxTwo, classBoxThree;
+    private ComboBox<String> classBoxOne, classBoxTwo, classBoxThree;
 
     @FXML
     private Label studentCountOne, studentCountTwo, studentCountThree, studentNameText;
@@ -34,10 +35,10 @@ public class MainController {
     @FXML
     private TextField addStudentText;
 
-    @FXML
-    public ObservableList classList;
+    public ObservableList<String> classList;
 
     ArrayList<ClassModel> classes = FileManager.readClasses();
+    ArrayList<StudentModel> calledStudents = new ArrayList<>();
 
 
     public void initialize() {
@@ -46,8 +47,8 @@ public class MainController {
 
         FileManager.initialSetup();
         classList.add("Keine Klasse");
-        for (int i = 0; i < classes.size(); i++) {
-            classList.add(classes.get(i).getClassname());
+        for (ClassModel aClass : classes) {
+            classList.add(aClass.getClassname());
         }
         classBoxOne.setItems(classList);
         classBoxTwo.setItems(classList);
@@ -63,6 +64,21 @@ public class MainController {
 
     @FXML
     public void rollDice(ActionEvent actionEvent) {
+
+
+        DiceModel dice = new DiceModel(getStudentModel(classBoxOne),
+                getStudentModel(classBoxTwo),
+                getStudentModel(classBoxThree));
+
+        if (dice.getStudents().isEmpty()) {
+            return;
+        }
+
+        StudentModel randomStudent = dice.rollDice();
+        System.out.println(randomStudent);
+        studentNameText.setText(randomStudent.toString());
+        calledStudents.add(randomStudent);
+        FileManager.writeProtocol(calledStudents);
     }
 
     @FXML
@@ -81,21 +97,38 @@ public class MainController {
         optionsStage.showAndWait();
     }
 
-    public void updateStudenCount(ActionEvent actionEvent) {
+    public void updateStudentCount(ActionEvent actionEvent) {
         countStudents(classBoxOne, studentCountOne);
         countStudents(classBoxTwo, studentCountTwo);
         countStudents(classBoxThree, studentCountThree);
     }
 
-    private void countStudents(ComboBox classBox, Label studentCount) {
-        if (!classBox.getValue().equals("Keine Klasse")) {
-            for (int i = 0; i < classes.size(); i++) {
-                if (classes.get(i).getClassname().equals(classBox.getValue())) {
-                    studentCount.setText(String.valueOf(classes.get(i).getStudents().size()));
-                }
+    private ArrayList<StudentModel> getStudentModel(ComboBox classBox) {
+        if (classBox.getValue().equals("Keine Klasse")) {
+            return null;
+        }
+
+        for (int i = 0; i < classes.size(); i++) {
+            if (classes.get(i).getClassname().equals(classBox.getValue())) {
+                return classes.get(i).getStudents();
             }
-        } else {
+        }
+        return null;
+    }
+
+    private void countStudents(ComboBox<String> classBox, Label studentCount) {
+        if (classBox.getValue().equals("Keine Klasse")) {
             studentCount.setText("00");
+            return;
+        }
+
+        for (int i = 0; i < classes.size(); i++) {
+            if (classes.get(i).getClassname().equals(classBox.getValue())) {
+                String countStr = String.valueOf(classes.get(i).getStudents().size());
+                countStr = String.format("%2s", countStr);
+                countStr = countStr.replaceAll(" ", "0");
+                studentCount.setText(countStr);
+            }
         }
     }
 }
