@@ -66,7 +66,7 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 - **Datei wählen** (öffnet einen File-Picker für `.csv`-Dateien).
 - **Speichern & Schließen** (Speichert die gewählten Optionen und schließt das Fenster).
 
-![image](https://github.com/user-attachments/assets/d99db928-f9d6-4387-9148-85a09a903ba0)
+![image](https://github.com/user-attachments/assets/2e45cb49-b336-48b7-b5b7-591207e5158b)
 - Der Name der gewählten Datei wird ihnen angezeigt.
 - **Klasse hinzufügen** (Speichert die auswahl der gezeigten Liste).
 
