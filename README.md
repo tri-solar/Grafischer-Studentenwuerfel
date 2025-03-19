@@ -21,9 +21,16 @@ Damit die Software reibungslos funktioniert, müssen folgende Systemvoraussetzun
 ## **2. Installation & Einrichtung**
 
 ### **2.1 Installation**
-1. Laden Sie das Programm für ihr Betriebsystem aus dem offiziellen GitHub-Repository herunter. Wir bieten Windows und Linux builds an, für macOS kann das [Projekt selbst gebaut](https://www.jetbrains.com/help/idea/javafx.html#package-app-with-jlink) werden.
-2. Entpacken Sie die Datei in ein Verzeichnis Ihrer Wahl.
-3. Führen Sie die ausführbare Datei aus.
+1. Laden Sie das Programm für ihr Betriebsystem aus dem offiziellen GitHub-Repository herunter.
+   Dafür drücken Sie auf `Code` und danach `Download ZIP`:
+   
+![image](https://github.com/user-attachments/assets/0b070c0d-bafd-41d2-b781-9b55269f6ba7)
+
+
+   Wir bieten Windows und Linux builds an, für macOS kann das [Projekt selbst gebaut](https://www.jetbrains.com/help/idea/javafx.html#package-app-with-jlink) werden.
+   
+3. Entpacken Sie die Datei aus dem build Ordner in ein Verzeichnis Ihrer Wahl.
+4. Führen Sie die app.bat (Windows) oder app (Linux) Datei aus.
 
 ### **2.2 Erster Start**
 1. Starten Sie die Anwendung.
