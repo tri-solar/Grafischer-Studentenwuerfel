@@ -80,6 +80,11 @@ public class MainController {
 
         StudentModel randomStudent;
         boolean allRulesAdhered;
+
+        // Disable only once per lesson rule when every student was already chosen.
+        //TODO: Add user feedback
+        Rules.IsStudentPerLessonRule.setActive(!everyStudentCalledOnce());
+
         do {
             randomStudent = dice.rollDice();
             StudentModel lastCalledStudent = calledStudents.size() - 1 != -1 ? calledStudents.get(calledStudents.size() - 1) : null;
@@ -151,5 +156,13 @@ public class MainController {
                 studentCount.setText(countStr);
             }
         }
+    }
+
+    private boolean everyStudentCalledOnce() {
+        for(StudentModel student : dice.getStudents()) {
+            if(!calledStudents.contains(student))
+                return false;
+        }
+        return true;
     }
 }
