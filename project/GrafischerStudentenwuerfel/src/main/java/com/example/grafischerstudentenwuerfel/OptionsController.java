@@ -1,34 +1,22 @@
 package com.example.grafischerstudentenwuerfel;
 
-import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class OptionsController {
 
     @FXML
-    CheckBox checkOne, checkTwo;
+    private CheckBox checkOne, checkTwo;
 
     @FXML
-    Label pickedFileLabel, saveMessageLabel;
-
-    @FXML
-    Button saveButton;
-
-    public void initialize() {
-        System.out.println("Initialize OptionsController");
-    }
+    private Label pickedFileLabel;
 
     @FXML
     public void pickFile(ActionEvent actionEvent)  {
@@ -43,7 +31,7 @@ public class OptionsController {
     }
 
     @FXML
-    public void saveOptionsButton(ActionEvent actionEvent) {
+    public void saveOptions(ActionEvent actionEvent) {
         System.out.println("Saved");
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
@@ -63,7 +51,8 @@ public class OptionsController {
         }
     }
 
-    public void addClassButton(ActionEvent actionEvent) {
+    @FXML
+    public void addClass(ActionEvent actionEvent) {
         if (pickedFileLabel.getText().equals("") || pickedFileLabel.getText().equals("Klasse hinzugefügt!") ) {
             pickedFileLabel.setText("");
             return;
