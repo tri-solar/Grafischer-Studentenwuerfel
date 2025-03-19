@@ -34,9 +34,12 @@ public class MainController {
 
     private ObservableList<String> classList;
 
-    ArrayList<ClassModel> classes = FileManager.readClasses();
-    ArrayList<StudentModel> calledStudents = new ArrayList<>();
-    DiceModel dice;
+    private ArrayList<ClassModel> classes = FileManager.readClasses();
+    private ArrayList<StudentModel> calledStudents = new ArrayList<>();
+    private DiceModel dice;
+
+    private final Rules.IsStudentInSuccessionRule IS_SUCCESSION_RULE = new Rules.IsStudentInSuccessionRule();
+    private final Rules.IsStudentPerLessonRule IS_ONCE_PER_LESSON_RULE = new Rules.IsStudentPerLessonRule();
 
     public void initialize() {
         System.out.println("Initialize MainController");
@@ -78,7 +81,15 @@ public class MainController {
             return;
         }
 
-        StudentModel randomStudent = dice.rollDice();
+        StudentModel randomStudent;
+        boolean allRulesAdhered;
+        do {
+            randomStudent = dice.rollDice();
+            allRulesAdhered =
+                    IS_SUCCESSION_RULE.isAdhered(randomStudent, calledStudents.get(calledStudents.size() - 1)) &&
+                    IS_ONCE_PER_LESSON_RULE.isAdhered(randomStudent, calledStudents);
+        } while (!allRulesAdhered);
+
         System.out.println(randomStudent);
         studentNameText.setText(randomStudent.getFirstname() +
                 " " + randomStudent.getLastname());
