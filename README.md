@@ -59,15 +59,16 @@ Im Hauptfenster haben Sie folgende Möglichkeiten:
 - Wenn sie einige Klassen gewählt haben, wird ihnen die jeweilige Anzahl der Studenten angezeigt.
 
 ### **3.2 Optionenmenü**
-![image](https://github.com/user-attachments/assets/c906ab6e-001e-4dfd-aafe-8912d991ecd7)
+![image](https://github.com/user-attachments/assets/5f1cc44f-8cfd-4378-82ab-c8fbdd71116a)
 
 Über den **Options-Button** gelangen Sie ins Optionsfenster, wo Sie folgende Einstellungen vornehmen können:
 - **Regeln aktivieren/deaktivieren** (Checkboxen zur Konfiguration der Auswahlregeln).
-- **Klassenliste manuell hinzufügen** (öffnet einen File-Picker für `.csv`-Dateien).
+- **Datei wählen** (öffnet einen File-Picker für `.csv`-Dateien).
+- **Speichern & Schließen** (Speichert die gewählten Optionen und schließt das Fenster).
 
-  ![image](https://github.com/user-attachments/assets/0311bf1e-2bd4-40af-a829-f69913ef117e)
+![image](https://github.com/user-attachments/assets/d99db928-f9d6-4387-9148-85a09a903ba0)
 - Der Name der gewählten Datei wird ihnen angezeigt.
-- **Einstellungen speichern** (Speichern-Button).
+- **Klasse hinzufügen** (Speichert die auswahl der gezeigten Liste).
 
 ### **3.3 Erstellung eines Protokolls**
 1. Das Programm protokolliert automatisch, welche Studenten in welcher Reihenfolge dran waren.
