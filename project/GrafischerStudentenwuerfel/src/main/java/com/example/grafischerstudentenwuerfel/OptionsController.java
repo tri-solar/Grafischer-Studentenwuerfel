@@ -18,9 +18,6 @@ public class OptionsController {
     @FXML
      private Label pickedFileLabel;
 
-    @FXML
-    private Button saveButton;
-
     public void initialize() {
         System.out.println("Initialize OptionsController");
         checkOne.setSelected(Rules.IsStudentPerLessonRule.isActive());
