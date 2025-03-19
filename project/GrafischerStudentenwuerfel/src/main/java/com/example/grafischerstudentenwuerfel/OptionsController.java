@@ -21,10 +21,7 @@ public class OptionsController {
     private CheckBox checkOne, checkTwo;
 
     @FXML
-    private Label pickedFileLabel, saveMessageLabel;
-
-    @FXML
-    private Button saveButton;
+    private Label pickedFileLabel;
 
     public void initialize() {
         System.out.println("Initialize OptionsController");
