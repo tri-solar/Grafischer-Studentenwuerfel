@@ -30,12 +30,9 @@ public class MainController {
     private Label studentCountOne, studentCountTwo, studentCountThree, studentNameText;
 
     @FXML
-    private Button optionsButton, rollDiceButton, addStudentButton;
-
-    @FXML
     private TextField addStudentText;
 
-    public ObservableList<String> classList;
+    private ObservableList<String> classList;
 
     ArrayList<ClassModel> classes = FileManager.readClasses();
     ArrayList<StudentModel> calledStudents = new ArrayList<>();
@@ -116,8 +113,8 @@ public class MainController {
         countStudents(classBoxThree, studentCountThree);
     }
 
-    private ArrayList<StudentModel> getStudentModel(ComboBox classBox) {
-        if (classBox.getValue().equals("Keine Klasse")) {
+    private ArrayList<StudentModel> getStudentModel(ComboBox<String> classBox) {
+        if (classBox.getValue() == null || classBox.getValue().equals("Keine Klasse")) {
             return null;
         }
 
