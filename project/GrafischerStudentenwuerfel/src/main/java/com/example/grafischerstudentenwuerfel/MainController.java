@@ -117,7 +117,7 @@ public class MainController {
     }
 
     private ArrayList<StudentModel> getStudentModel(ComboBox classBox) {
-        if (classBox.getValue().equals("Keine Klasse")) {
+        if (classBox.getValue() == null || classBox.getValue().equals("Keine Klasse")) {
             return null;
         }
 
