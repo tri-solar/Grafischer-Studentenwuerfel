@@ -1,5 +1,7 @@
 package com.example.grafischerstudentenwuerfel.model;
 
+import java.util.Objects;
+
 public class StudentModel implements Comparable<StudentModel> {
     private String firstname;
     private String lastname;
@@ -10,15 +12,6 @@ public class StudentModel implements Comparable<StudentModel> {
         this.firstname = firstname;
         this.lastname = lastname;
         this.classname = classname;
-    }
-
-    // Unused right now, for later use
-    public String toJSONString() {
-        return String.format("{\"firstname\": \"%s\", \"lastname\": \"%s\", \"classname\": \"%s\"}", firstname, lastname, classname);
-    }
-
-    public String getClassname() {
-        return classname;
     }
 
     public String getFirstname() {
@@ -37,5 +30,16 @@ public class StudentModel implements Comparable<StudentModel> {
     @Override
     public int compareTo(StudentModel o) {
         return String.CASE_INSENSITIVE_ORDER.compare(this.lastname, o.lastname);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (getClass() != obj.getClass())
+            return false;
+
+        StudentModel o = (StudentModel) obj;
+        return Objects.equals(firstname, o.firstname) &&
+                Objects.equals(lastname, o.lastname) &&
+                Objects.equals(classname, o.classname);
     }
 }
