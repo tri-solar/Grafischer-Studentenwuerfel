@@ -30,20 +30,18 @@ public class MainController {
     private Label studentCountOne, studentCountTwo, studentCountThree, studentNameText;
 
     @FXML
-    private Button optionsButton, rollDiceButton, addStudentButton;
-
-    @FXML
     private TextField addStudentText;
 
-    public ObservableList<String> classList;
+    private ObservableList<String> classList;
 
-    ArrayList<ClassModel> classes = FileManager.readClasses();
-    ArrayList<StudentModel> calledStudents = new ArrayList<>();
-    DiceModel dice;
+    private ArrayList<ClassModel> classes = FileManager.readClasses();
+    private ArrayList<StudentModel> calledStudents = new ArrayList<>();
+    private DiceModel dice;
 
     public void initialize() {
         System.out.println("Initialize MainController");
         FileManager.initialSetup();
+        FileManager.readOptions();
         generateClasses();
     }
 
@@ -81,7 +79,17 @@ public class MainController {
             return;
         }
 
-        StudentModel randomStudent = dice.rollDice();
+        StudentModel randomStudent;
+        boolean allRulesAdhered;
+        do {
+            randomStudent = dice.rollDice();
+            StudentModel lastCalledStudent = calledStudents.size() - 1 != -1 ? calledStudents.get(calledStudents.size() - 1) : null;
+
+            allRulesAdhered =
+                    Rules.IsStudentInSuccessionRule.isAdhered(randomStudent, lastCalledStudent) &&
+                    Rules.IsStudentPerLessonRule.isAdhered(randomStudent, calledStudents);
+        } while (!allRulesAdhered);
+
         System.out.println(randomStudent);
         studentNameText.setText(randomStudent.getFirstname() +
                 " " + randomStudent.getLastname());
@@ -116,7 +124,8 @@ public class MainController {
         countStudents(classBoxThree, studentCountThree);
     }
 
-    private ArrayList<StudentModel> getStudentModel(ComboBox classBox) {
+    private ArrayList<StudentModel> getStudentModel(ComboBox<String> classBox) {
+
         if (classBox.getValue() == null || classBox.getValue().equals("Keine Klasse")) {
             return null;
         }

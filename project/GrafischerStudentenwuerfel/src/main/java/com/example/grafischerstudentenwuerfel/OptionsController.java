@@ -16,7 +16,13 @@ public class OptionsController {
     private CheckBox checkOne, checkTwo;
 
     @FXML
-    private Label pickedFileLabel;
+     private Label pickedFileLabel;
+
+    public void initialize() {
+        System.out.println("Initialize OptionsController");
+        checkOne.setSelected(Rules.IsStudentPerLessonRule.isActive());
+        checkTwo.setSelected(Rules.IsStudentInSuccessionRule.isActive());
+    }
 
     @FXML
     public void pickFile(ActionEvent actionEvent)  {
@@ -24,7 +30,7 @@ public class OptionsController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Dateien", "*.csv"));
 
         File file = fileChooser.showOpenDialog(null);
-        if (file != null) { // placeholder logik
+        if (file != null) { // placeholder logic
             pickedFileLabel.setText(file.getName());
             FileManager.copyFile(file);
         }
@@ -32,6 +38,10 @@ public class OptionsController {
 
     @FXML
     public void saveOptions(ActionEvent actionEvent) {
+        Rules.IsStudentPerLessonRule.setActive(checkOne.isSelected());
+        Rules.IsStudentInSuccessionRule.setActive(checkTwo.isSelected());
+
+        FileManager.writeOptions();
         System.out.println("Saved");
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
