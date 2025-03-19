@@ -60,6 +60,7 @@ public class OptionsController {
         }
     }
 
+    @FXML
     public void addClassButton(ActionEvent actionEvent) {
         if (pickedFileLabel.getText().equals("") || pickedFileLabel.getText().equals("Klasse hinzugefügt!") ) {
             pickedFileLabel.setText("");
