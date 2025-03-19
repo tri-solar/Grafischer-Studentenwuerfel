@@ -28,6 +28,6 @@
       <Button text="Klasse hinzufügen" onAction="#addClassButton"/>
     </HBox>
     <Separator maxWidth="250"/>
-    <Button text="Speichern &amp; Schließen" onAction="#saveOptionsButton"/>
+    <Button text="Speichern &amp; Schließen" onAction="#saveOptions"/>
   </VBox>
 </VBox>
