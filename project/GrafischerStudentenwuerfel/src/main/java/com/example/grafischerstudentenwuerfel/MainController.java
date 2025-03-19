@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -58,9 +57,9 @@ public class MainController {
         classBoxOne.setValue(classList.get(0));
         classBoxTwo.setValue(classList.get(0));
         classBoxThree.setValue(classList.get(0));
-        dice = new DiceModel(getStudentModel(classBoxOne),
-                getStudentModel(classBoxTwo),
-                getStudentModel(classBoxThree));
+        dice = new DiceModel(refreshClassBox(classBoxOne),
+                refreshClassBox(classBoxTwo),
+                refreshClassBox(classBoxThree));
     }
 
     @FXML
@@ -116,15 +115,15 @@ public class MainController {
     }
 
     public void updateStudentCount(ActionEvent actionEvent) {
-        dice.setStudents(getStudentModel(classBoxOne),
-                getStudentModel(classBoxTwo),
-                getStudentModel(classBoxThree));
+        dice.setStudents(refreshClassBox(classBoxOne),
+                refreshClassBox(classBoxTwo),
+                refreshClassBox(classBoxThree));
         countStudents(classBoxOne, studentCountOne);
         countStudents(classBoxTwo, studentCountTwo);
         countStudents(classBoxThree, studentCountThree);
     }
 
-    private ArrayList<StudentModel> getStudentModel(ComboBox<String> classBox) {
+    private ArrayList<StudentModel> refreshClassBox(ComboBox<String> classBox) {
 
         if (classBox.getValue() == null || classBox.getValue().equals("Keine Klasse")) {
             return null;
