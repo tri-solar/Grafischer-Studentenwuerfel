@@ -23,10 +23,6 @@ public class OptionsController {
     @FXML
     private Label pickedFileLabel;
 
-    public void initialize() {
-        System.out.println("Initialize OptionsController");
-    }
-
     @FXML
     public void pickFile(ActionEvent actionEvent)  {
         FileChooser fileChooser = new FileChooser();
