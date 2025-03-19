@@ -18,13 +18,13 @@ import java.nio.file.Path;
 public class OptionsController {
 
     @FXML
-    CheckBox checkOne, checkTwo;
+    private CheckBox checkOne, checkTwo;
 
     @FXML
-    Label pickedFileLabel, saveMessageLabel;
+    private Label pickedFileLabel, saveMessageLabel;
 
     @FXML
-    Button saveButton;
+    private Button saveButton;
 
     public void initialize() {
         System.out.println("Initialize OptionsController");
