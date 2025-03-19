@@ -11,9 +11,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class OptionsController {
 
@@ -28,6 +25,8 @@ public class OptionsController {
 
     public void initialize() {
         System.out.println("Initialize OptionsController");
+        checkOne.setSelected(Rules.IsStudentPerLessonRule.isActive());
+        checkTwo.setSelected(Rules.IsStudentInSuccessionRule.isActive());
     }
 
     @FXML
@@ -36,7 +35,7 @@ public class OptionsController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Dateien", "*.csv"));
 
         File file = fileChooser.showOpenDialog(null);
-        if (file != null) { // placeholder logik
+        if (file != null) { // placeholder logic
             pickedFileLabel.setText(file.getName());
             FileManager.copyFile(file);
         }
@@ -44,6 +43,11 @@ public class OptionsController {
 
     @FXML
     public void saveOptionsButton(ActionEvent actionEvent) {
+        Rules.IsStudentPerLessonRule.setActive(checkOne.isSelected());
+        Rules.IsStudentInSuccessionRule.setActive(checkTwo.isSelected());
+
+        FileManager.writeOptions();
+
         System.out.println("Saved");
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();

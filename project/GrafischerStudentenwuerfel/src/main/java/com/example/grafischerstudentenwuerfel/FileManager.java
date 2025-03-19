@@ -112,7 +112,10 @@ public class FileManager {
         return true;
     }
 
-    public static boolean writeOptions(boolean isStudentPerLesson, boolean isStudentInSuccession){
+    public static void writeOptions(){
+        boolean isStudentPerLesson = Rules.IsStudentPerLessonRule.isActive();
+        boolean isStudentInSuccession = Rules.IsStudentInSuccessionRule.isActive();
+
         String optionsJSON = String.format("{\"isStudentPerLesson\": %b, \"isStudentInSuccession\": %b}", isStudentPerLesson, isStudentInSuccession );
 
         try {
@@ -121,16 +124,20 @@ public class FileManager {
             pw.close();
         } catch (IOException e) {
             System.out.println("Error writing options: " + e.getMessage());
-            return false;
         }
-        return true;
     }
 
-    public static boolean[] readOptions() {
+    public static void readOptions() {
         boolean[] options = { false, false };
         String lines = "";
         try {
             lines = Files.readString(OPTIONS_PATH);
+
+            lines = lines.replace("{", "");
+            lines = lines.replace("}", "");
+            lines = lines.replace("[", "");
+            lines = lines.replace("}", "");
+
             String[] linesSplit = lines.split(",");
             String perLessonOption = linesSplit[0];
             boolean perLessonValue = Boolean.parseBoolean(perLessonOption.split(":")[1].trim());
@@ -142,6 +149,8 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Error reading options: " + e.getMessage());
         }
-        return options;
+
+        Rules.IsStudentPerLessonRule.setActive(options[0]);
+        Rules.IsStudentInSuccessionRule.setActive(options[1]);
     }
 }

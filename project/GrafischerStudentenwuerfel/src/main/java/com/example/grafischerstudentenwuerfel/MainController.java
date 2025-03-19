@@ -38,12 +38,10 @@ public class MainController {
     private ArrayList<StudentModel> calledStudents = new ArrayList<>();
     private DiceModel dice;
 
-    private final Rules.IsStudentInSuccessionRule IS_SUCCESSION_RULE = new Rules.IsStudentInSuccessionRule();
-    private final Rules.IsStudentPerLessonRule IS_ONCE_PER_LESSON_RULE = new Rules.IsStudentPerLessonRule();
-
     public void initialize() {
         System.out.println("Initialize MainController");
         FileManager.initialSetup();
+        FileManager.readOptions();
         generateClasses();
     }
 
@@ -85,9 +83,11 @@ public class MainController {
         boolean allRulesAdhered;
         do {
             randomStudent = dice.rollDice();
+            StudentModel lastCalledStudent = calledStudents.size() - 1 != -1 ? calledStudents.get(calledStudents.size() - 1) : null;
+
             allRulesAdhered =
-                    IS_SUCCESSION_RULE.isAdhered(randomStudent, calledStudents.get(calledStudents.size() - 1)) &&
-                    IS_ONCE_PER_LESSON_RULE.isAdhered(randomStudent, calledStudents);
+                    Rules.IsStudentInSuccessionRule.isAdhered(randomStudent, lastCalledStudent) &&
+                    Rules.IsStudentPerLessonRule.isAdhered(randomStudent, calledStudents);
         } while (!allRulesAdhered);
 
         System.out.println(randomStudent);
