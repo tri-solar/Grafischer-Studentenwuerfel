@@ -16,17 +16,17 @@ import java.util.Date;
 import java.util.List;
 
 public class FileManager {
-    private static final String preferredDir = "H:/";
-    private static final String defaultDir = System.getProperty("user.home");
-    private static final String applicationDir = (Files.exists(Paths.get(defaultDir)) ? defaultDir : preferredDir) + "/studentenwuerfel";
-    private static final Path classesDir = Paths.get(applicationDir + "/classes/");
-    private static final Path optionsPath = Paths.get(applicationDir + "/options.json");
-    private static final Path protocolsDir= Paths.get(applicationDir + "/protocols");
+    private static final String PREFERRED_DIR = "H:/";
+    private static final String DEFAULT_DIR = System.getProperty("user.home");
+    private static final String APPLICATION_DIR = (Files.exists(Paths.get(DEFAULT_DIR)) ? DEFAULT_DIR : PREFERRED_DIR) + "/studentenwuerfel";
+    private static final Path CLASSES_DIR = Paths.get(APPLICATION_DIR + "/classes/");
+    private static final Path OPTIONS_PATH = Paths.get(APPLICATION_DIR + "/options.json");
+    private static final Path PROTOCOLS_DIR = Paths.get(APPLICATION_DIR + "/protocols");
 
     public static void copyFile(File file)  {
         try {
             Path sourceDir = Path.of(file.getAbsolutePath());
-            Path destDir = Path.of(classesDir + "\\" + file.getName());
+            Path destDir = Path.of(CLASSES_DIR + "//" + file.getName());
             Files.copy(sourceDir, destDir);
         } catch (IOException e) {
             System.out.println("Error copying class: " +e.getMessage());
@@ -38,22 +38,22 @@ public class FileManager {
         System.out.println("Initialize FileManager");
         try {
             // Create application directory if not present
-            Path applicationDirPath = Paths.get(applicationDir);
+            Path applicationDirPath = Paths.get(APPLICATION_DIR);
             if (Files.notExists(applicationDirPath)) {
                 Files.createDirectory(applicationDirPath);
                 System.out.println("Directory created: " + applicationDirPath);
             }
 
             // Create classes directory if not present
-            if (Files.notExists(classesDir)) {
-                Files.createDirectory(classesDir);
-                System.out.println("Directory created: " + classesDir);
+            if (Files.notExists(CLASSES_DIR)) {
+                Files.createDirectory(CLASSES_DIR);
+                System.out.println("Directory created: " + CLASSES_DIR);
             }
 
             // Create protocol directory if not present
-            if (Files.notExists(protocolsDir)) {
-                Files.createDirectory(protocolsDir);
-                System.out.println("Directory created: " + protocolsDir);
+            if (Files.notExists(PROTOCOLS_DIR)) {
+                Files.createDirectory(PROTOCOLS_DIR);
+                System.out.println("Directory created: " + PROTOCOLS_DIR);
             }
         } catch (IOException e) {
             System.out.println("Error creating directories: " +e.getMessage());
@@ -62,7 +62,7 @@ public class FileManager {
 
     public static ArrayList<ClassModel> readClasses() {
         ArrayList<ClassModel> classes = new ArrayList<>();
-        File classesDirectory = classesDir.toFile();
+        File classesDirectory = CLASSES_DIR.toFile();
         File[] classFiles = classesDirectory.listFiles();
 
         for (File classFile : classFiles) {
@@ -94,7 +94,7 @@ public class FileManager {
         String dateFormatted = dateFormat.format(today);
 
         String protocolName = String.format("%s.txt", dateFormatted);
-        String protocolPath = protocolsDir + "/" + protocolName;
+        String protocolPath = PROTOCOLS_DIR + "/" + protocolName;
 
         String studentsString = "";
         for(StudentModel student : calledStudents) {
@@ -112,25 +112,32 @@ public class FileManager {
         return true;
     }
 
-    public static boolean writeOptions(boolean isStudentPerLesson, boolean isStudentInSuccession){
+    public static void writeOptions(){
+        boolean isStudentPerLesson = Rules.IsStudentPerLessonRule.isActive();
+        boolean isStudentInSuccession = Rules.IsStudentInSuccessionRule.isActive();
+
         String optionsJSON = String.format("{\"isStudentPerLesson\": %b, \"isStudentInSuccession\": %b}", isStudentPerLesson, isStudentInSuccession );
 
         try {
-            PrintWriter pw = new PrintWriter(optionsPath.toString());
+            PrintWriter pw = new PrintWriter(OPTIONS_PATH.toString());
             pw.println(optionsJSON);
             pw.close();
         } catch (IOException e) {
             System.out.println("Error writing options: " + e.getMessage());
-            return false;
         }
-        return true;
     }
 
-    public static boolean[] readOptions() {
+    public static void readOptions() {
         boolean[] options = { false, false };
         String lines = "";
         try {
-            lines = Files.readString(optionsPath);
+            lines = Files.readString(OPTIONS_PATH);
+
+            lines = lines.replace("{", "");
+            lines = lines.replace("}", "");
+            lines = lines.replace("[", "");
+            lines = lines.replace("}", "");
+
             String[] linesSplit = lines.split(",");
             String perLessonOption = linesSplit[0];
             boolean perLessonValue = Boolean.parseBoolean(perLessonOption.split(":")[1].trim());
@@ -142,6 +149,8 @@ public class FileManager {
         } catch (IOException e) {
             System.out.println("Error reading options: " + e.getMessage());
         }
-        return options;
+
+        Rules.IsStudentPerLessonRule.setActive(options[0]);
+        Rules.IsStudentInSuccessionRule.setActive(options[1]);
     }
 }

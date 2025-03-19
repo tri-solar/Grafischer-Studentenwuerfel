@@ -11,17 +11,6 @@ public class ClassModel {
         this.classname = classname;
     }
 
-    // Unused right now, for later use
-    public String toJSONString() {
-        String studentsJSON = "";
-        for(StudentModel student : students) {
-            studentsJSON += student.toJSONString() + ",";
-        }
-        // Remove last ,
-        studentsJSON = studentsJSON.substring(0, studentsJSON.length() - 1);
-        return String.format("{\"classname\": \"%s\", \"students\": [%s]}", classname, studentsJSON);
-    }
-
     public ArrayList<StudentModel> getStudents() {
         return students;
     }

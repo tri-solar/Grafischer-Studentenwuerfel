@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -30,20 +29,18 @@ public class MainController {
     private Label studentCountOne, studentCountTwo, studentCountThree, studentNameText;
 
     @FXML
-    private Button optionsButton, rollDiceButton, addStudentButton;
-
-    @FXML
     private TextField addStudentText;
 
-    public ObservableList<String> classList;
+    private ObservableList<String> classList;
 
-    ArrayList<ClassModel> classes = FileManager.readClasses();
-    ArrayList<StudentModel> calledStudents = new ArrayList<>();
-    DiceModel dice;
+    private ArrayList<ClassModel> classes = FileManager.readClasses();
+    private ArrayList<StudentModel> calledStudents = new ArrayList<>();
+    private DiceModel dice;
 
     public void initialize() {
         System.out.println("Initialize MainController");
         FileManager.initialSetup();
+        FileManager.readOptions();
         generateClasses();
     }
 
@@ -60,9 +57,9 @@ public class MainController {
         classBoxOne.setValue(classList.get(0));
         classBoxTwo.setValue(classList.get(0));
         classBoxThree.setValue(classList.get(0));
-        dice = new DiceModel(getStudentModel(classBoxOne),
-                getStudentModel(classBoxTwo),
-                getStudentModel(classBoxThree));
+        dice = new DiceModel(refreshClassBox(classBoxOne),
+                refreshClassBox(classBoxTwo),
+                refreshClassBox(classBoxThree));
     }
 
     @FXML
@@ -81,7 +78,22 @@ public class MainController {
             return;
         }
 
-        StudentModel randomStudent = dice.rollDice();
+        StudentModel randomStudent;
+        boolean allRulesAdhered;
+
+        // Disable only once per lesson rule when every student was already chosen.
+        //TODO: Add user feedback
+        Rules.IsStudentPerLessonRule.setActive(!everyStudentCalledOnce());
+
+        do {
+            randomStudent = dice.rollDice();
+            StudentModel lastCalledStudent = calledStudents.size() - 1 != -1 ? calledStudents.get(calledStudents.size() - 1) : null;
+
+            allRulesAdhered =
+                    Rules.IsStudentInSuccessionRule.isAdhered(randomStudent, lastCalledStudent) &&
+                    Rules.IsStudentPerLessonRule.isAdhered(randomStudent, calledStudents);
+        } while (!allRulesAdhered);
+
         System.out.println(randomStudent);
         studentNameText.setText(randomStudent.getFirstname() +
                 " " + randomStudent.getLastname());
@@ -108,16 +120,17 @@ public class MainController {
     }
 
     public void updateStudentCount(ActionEvent actionEvent) {
-        dice.setStudents(getStudentModel(classBoxOne),
-                getStudentModel(classBoxTwo),
-                getStudentModel(classBoxThree));
+        dice.setStudents(refreshClassBox(classBoxOne),
+                refreshClassBox(classBoxTwo),
+                refreshClassBox(classBoxThree));
         countStudents(classBoxOne, studentCountOne);
         countStudents(classBoxTwo, studentCountTwo);
         countStudents(classBoxThree, studentCountThree);
     }
 
-    private ArrayList<StudentModel> getStudentModel(ComboBox classBox) {
-        if (classBox.getValue().equals("Keine Klasse")) {
+    private ArrayList<StudentModel> refreshClassBox(ComboBox<String> classBox) {
+
+        if (classBox.getValue() == null || classBox.getValue().equals("Keine Klasse")) {
             return null;
         }
 
@@ -143,5 +156,13 @@ public class MainController {
                 studentCount.setText(countStr);
             }
         }
+    }
+
+    private boolean everyStudentCalledOnce() {
+        for(StudentModel student : dice.getStudents()) {
+            if(!calledStudents.contains(student))
+                return false;
+        }
+        return true;
     }
 }

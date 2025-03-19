@@ -1,33 +1,27 @@
 package com.example.grafischerstudentenwuerfel;
 
-import com.sun.tools.javac.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class OptionsController {
 
     @FXML
-    CheckBox checkOne, checkTwo;
+    private CheckBox checkOne, checkTwo;
 
     @FXML
-    Label pickedFileLabel, saveMessageLabel;
-
-    @FXML
-    Button saveButton;
+     private Label pickedFileLabel;
 
     public void initialize() {
         System.out.println("Initialize OptionsController");
+        checkOne.setSelected(Rules.IsStudentPerLessonRule.isActive());
+        checkTwo.setSelected(Rules.IsStudentInSuccessionRule.isActive());
     }
 
     @FXML
@@ -36,14 +30,18 @@ public class OptionsController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV Dateien", "*.csv"));
 
         File file = fileChooser.showOpenDialog(null);
-        if (file != null) { // placeholder logik
+        if (file != null) { // placeholder logic
             pickedFileLabel.setText(file.getName());
             FileManager.copyFile(file);
         }
     }
 
     @FXML
-    public void saveOptionsButton(ActionEvent actionEvent) {
+    public void saveOptions(ActionEvent actionEvent) {
+        Rules.IsStudentPerLessonRule.setActive(checkOne.isSelected());
+        Rules.IsStudentInSuccessionRule.setActive(checkTwo.isSelected());
+
+        FileManager.writeOptions();
         System.out.println("Saved");
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
@@ -63,7 +61,8 @@ public class OptionsController {
         }
     }
 
-    public void addClassButton(ActionEvent actionEvent) {
+    @FXML
+    public void addClass(ActionEvent actionEvent) {
         if (pickedFileLabel.getText().equals("") || pickedFileLabel.getText().equals("Klasse hinzugefügt!") ) {
             pickedFileLabel.setText("");
             return;

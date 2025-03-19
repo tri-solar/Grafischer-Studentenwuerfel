@@ -5,12 +5,11 @@ import java.util.Random;
 
 public class DiceModel {
     private ArrayList<StudentModel> students;
-    private Random rn;
+    private final Random RN;
 
     public DiceModel(ArrayList<StudentModel> firstSelection, ArrayList<StudentModel> secondSelection, ArrayList<StudentModel> thirdSelection) {
         setStudents(firstSelection, secondSelection, thirdSelection);
-
-        this.rn = new Random();
+        this.RN = new Random();
     }
 
     public ArrayList<StudentModel> getStudents() {
@@ -31,6 +30,6 @@ public class DiceModel {
     }
 
     public StudentModel rollDice() {
-        return this.students.get(rn.nextInt(0, this.students.size()));
+        return this.students.get(RN.nextInt(0, this.students.size()));
     }
 }
