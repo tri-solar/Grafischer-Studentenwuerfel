@@ -26,7 +26,7 @@ public class FileManager {
     public static void copyFile(File file)  {
         try {
             Path sourceDir = Path.of(file.getAbsolutePath());
-            Path destDir = Path.of(classesDir + "\\" + file.getName());
+            Path destDir = Path.of(classesDir + "//" + file.getName());
             Files.copy(sourceDir, destDir);
         } catch (IOException e) {
             System.out.println("Error copying class: " +e.getMessage());
