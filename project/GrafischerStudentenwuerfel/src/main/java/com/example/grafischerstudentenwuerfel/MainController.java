@@ -33,7 +33,7 @@ public class MainController {
 
     private ObservableList<String> classList;
 
-    private ArrayList<ClassModel> classes = FileManager.readClasses();
+    private ArrayList<ClassModel> classes;
     private ArrayList<StudentModel> calledStudents = new ArrayList<>();
     private DiceModel dice;
 
@@ -42,6 +42,7 @@ public class MainController {
         FileManager.initialSetup();
         FileManager.readOptions();
         generateClasses();
+        classes = FileManager.readClasses();
     }
 
     public void generateClasses() {
